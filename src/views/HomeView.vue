@@ -1,7 +1,12 @@
 <script setup>
+  import Header from "../components/HeaderComponent.vue";
+  import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+
+    <Header></Header>
+
     <div class="banner"></div>
     <div class="first-part">
         <h1>Comment ça fonctionne ?</h1>
@@ -49,11 +54,17 @@
         </div>
     </div>
 
+    <Footer></Footer>
+
 </template>
 
 <script>
 export default {
 name: "HomeComponent",
+components: {
+      Header,
+      Footer,
+},
 methods: {
     redirectToServices() {
         this.$router.push('/nos-services');

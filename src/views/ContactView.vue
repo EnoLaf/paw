@@ -1,7 +1,11 @@
 <script setup>
+    import Header from "../components/HeaderComponent.vue";
+    import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+    <Header></Header>
+
     <div class="banner"></div>
     <h1>Nous contacter</h1>
     <div class="contact">
@@ -11,11 +15,17 @@
         <textarea class="input" name="text" id="content" cols="60" rows="10" placeholder="Message"></textarea>
         <button>Envoyer</button>
     </div>
+
+    <Footer></Footer>
 </template>
 
 <script>
 export default {
 name: "ContactComponent",
+components: {
+      Header,
+      Footer,
+}
 };
 </script>
 

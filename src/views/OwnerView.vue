@@ -1,7 +1,12 @@
 <script setup>
+  import Header from "../components/HeaderComponent.vue";
+  import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+
+    <Header></Header>
+
     <div class="banner"></div>
     <div class="first-part">
         <h1>Pour les propriétaires d'animaux</h1>
@@ -28,11 +33,18 @@
             </div>
         </div>
     </div>
+
+    <Footer></Footer>
+
 </template>
 
 <script>
 export default {
 name: "OwnerComponent",
+components: {
+      Header,
+      Footer,
+}
 };
 </script>
 

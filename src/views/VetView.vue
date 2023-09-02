@@ -1,7 +1,12 @@
 <script setup>
+  import Header from "../components/HeaderComponent.vue";
+  import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+
+    <Header></Header>
+
     <div class="banner"></div>
     <h1>Pour les vétérinaires</h1>
     <div class="features">
@@ -34,11 +39,17 @@
         <img src="../assets/mockup.png" alt="">
     </div>
     
+    <Footer></Footer>
+
 </template>
 
 <script>
 export default {
 name: "VetComponent",
+components: {
+      Header,
+      Footer,
+}
 };
 </script>
 

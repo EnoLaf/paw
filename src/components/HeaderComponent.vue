@@ -12,8 +12,10 @@ import Navbar from "./NavbarComponent.vue";
       </a>
 
       <div class="buttons">
-        <p @click="showSignIn" class="signIn">Inscription</p>
-        <p @click="showLogIn" class="logIn">Connexion</p>
+        <p @click="showSignIn" v-if="!connected">Inscription</p>
+        <p @click="showLogIn" class="logIn" v-if="!connected">Connexion</p>
+        <a href="/carnet-de-sante" v-if="connected">Carnet de santé</a>
+        <p @click="disconnect" class="logIn" v-if="connected">Déconnexion</p>
       </div>
     </div>
 
@@ -32,7 +34,7 @@ import Navbar from "./NavbarComponent.vue";
           <div class="right-part">
             <input type="text" placeholder="Email">
             <input type="password" placeholder="Mot de passe">
-            <button>CONNEXION</button>
+            <button @click="connexion">CONNEXION</button>
             <p @click="showSignIn">Créer un compte</p>
             <p @click="showForgottenPassword">Mot de passe oublié ?</p>
           </div>
@@ -97,6 +99,7 @@ export default {
         logIn : false,
         signIn : false,
         pwd : false,
+        connected : false
     }
   },
   methods: {
@@ -119,7 +122,14 @@ export default {
         this.logIn = false;
         this.signIn = false;
         this.pwd = false;
-      }  
+      },
+      connexion(){
+        this.logIn = false;
+        this.connected = true;
+      },
+      disconnect(){
+        this.conencted = false;
+      } 
   },
 };
 </script>
@@ -132,31 +142,31 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.logo{
-  display: flex;
-  justify-content: center;
-  margin-left: 30rem;
-  margin-bottom: 1rem;
-}
 .title{
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
+}
+.logo{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
 }
 .buttons{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-left: 18rem;
+  align-items: flex-start;
 }
 .buttons-mobile{
   display: none;
 }
-p{
+p, a{
   font-family: 'Montserrat', sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
   text-decoration: none;
+  color: black;
 }
 .logIn{
   margin-top: 2rem;
@@ -262,7 +272,7 @@ p{
     flex-direction: row;
   }
   .logo{
-    margin-left: 1rem;
+    margin-left: 2rem;
     width: 15rem;
   }
   .buttons{
@@ -306,12 +316,6 @@ p{
 }
 
 @media (min-width: 481px) and (max-width : 1024px) {
-  .logo{
-    margin-left: 3rem;
-  }
-  .buttons{
-    margin-left: 2rem;
-  }
   .menu{
     margin-left: 5rem;
   }

@@ -1,18 +1,11 @@
 <script setup>
   import { RouterView } from 'vue-router';
-  import Header from "./components/HeaderComponent.vue";
-  import Footer from "./components/FooterComponent.vue";
 </script>
 
 <template>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 
-  <Header id="header"></Header>
-  
-
   <RouterView></RouterView>
-  
-  <Footer></Footer>
 
 </template>
 
@@ -20,8 +13,6 @@
   export default {
     name: 'App',
     components: {
-      Header,
-      Footer,
     }
   }
 </script>

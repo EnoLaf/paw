@@ -1,7 +1,11 @@
 <script setup>
+  import Header from "../components/HeaderComponent.vue";
+  import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+
+    <Header></Header>
 
     <div class="banner"></div>
     <h1>A propos</h1>
@@ -17,11 +21,17 @@
         enfin à l'ADRAR dans le cadre de sa formation de Conceptrice Développeuse Web.
     </p>
 
+    <Footer></Footer>
+
 </template>
 
 <script>
 export default {
 name: "AboutComponent",
+components: {
+      Header,
+      Footer,
+}
 };
 </script>
 

@@ -1,7 +1,12 @@
 <script setup>
+  import Header from "../components/HeaderComponent.vue";
+  import Footer from "../components/FooterComponent.vue";
 </script>
 
 <template>
+
+    <Header></Header>
+
     <div class="banner"></div>
     <h1>Comment ça fonctionne ?</h1>
     <div class="container">
@@ -22,11 +27,18 @@
             <button @click="redirectToVet">En savoir plus</button>
         </div>
     </div>
+
+    <Footer></Footer>
+
 </template>
 
 <script>
 export default {
 name: "ServicesComponent",
+components: {
+      Header,
+      Footer,
+},
 methods: {
     redirectToOwner() {
         this.$router.push('/proprietaires');
