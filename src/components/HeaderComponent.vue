@@ -25,7 +25,7 @@ import Navbar from "./NavbarComponent.vue";
       <div class="blur" v-if="logIn" @click.self="close">
         <div class="frame">
           <div class="close">
-            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click.self="close"/>
+            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click="close"/>
           </div>
           <div class="left-part">
             <div class="img" id="logIn-img"></div>
@@ -44,7 +44,7 @@ import Navbar from "./NavbarComponent.vue";
       <div class="blur" v-if="signIn" @click.self="close">
         <div class="frame">
           <div class="close">
-            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click.self="close"/>
+            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click="close"/>
           </div>
           <div class="left-part">
             <div class="img" id="signIn-img"></div>
@@ -64,7 +64,7 @@ import Navbar from "./NavbarComponent.vue";
       <div class="blur" v-if="pwd" @click.self="close">
         <div class="frame">
           <div class="close">
-            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click.self="close"/>
+            <img width="40" height="40" src="https://img.icons8.com/ios/100/delete-sign--v1.png" alt="croix" @click="close"/>
           </div>
           <div class="left-part">
             <div class="img" id="pwd-img"></div>

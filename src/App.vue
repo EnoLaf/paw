@@ -34,6 +34,7 @@
     --dark-orange : #CC5803;
     --mid-orange : #E2711D;
     --logo-orange : #FF9505;
+    --logo-orange-15 : rgba(255,149,5,0.15);
     --yellow : #FFB627;
     --light-orange : #FFC971;
   }

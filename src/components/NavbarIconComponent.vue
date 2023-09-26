@@ -43,7 +43,7 @@ export default {
 <style scoped>
 .navigation{
   width: 100%;
-  background: var(--cream);
+  background: var(--logo-orange-15);
   height: 5rem;
   display: flex;
   flex-direction: row;
