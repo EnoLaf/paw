@@ -57,7 +57,7 @@
 
             <div class="selectBorder">
               <label for="select">Espèce</label>
-              <select name="item" id="select">
+              <select name="item" id="select" v-model="specieModel">
                 <option value="">--Chat/Chien/NAC--</option>
                 <option value="1">Chat</option>
                 <option value="2">Chien</option>
@@ -91,19 +91,19 @@
             </InputLabel>
 
             <div class="dob">
-              <input type="date" :style="{'--borderColor': borderColor, '--bgColor': bgColor, '--fontSize': fontSize, '--width': width, '--height': height}">
+              <input type="date" v-model="dobModel">
               <span>Date de naissance</span>
             </div>
 
-            <div class="radioBorder" :style="{'--borderColor': borderColor, '--bgColor': bgColor, '--width': width, '--height': height, '--fontSize': fontSize}">
+            <div class="radioBorder">
               <span>Sexe</span>
               <div class="radio">
                   <div class="radio1">
-                    <input type="radio" id="female" name="sexe" value="1">
+                    <input type="radio" id="female" name="sexe" value="1" v-model="genderModel">
                     <label for="female">Femelle</label>
                   </div>
                   <div class="radio2">
-                    <input type="radio" id="male" name="sexe" value="0" class="male">
+                    <input type="radio" id="male" name="sexe" value="0" class="male" v-model="genderModel">
                     <label for="male">Mâle</label>
                   </div>
               </div>
@@ -150,13 +150,13 @@
             </InputLabel>
             
             <div class="textArea">
-              <textarea name="medicalHistory" id="" cols="36" rows="4"></textarea>
-                <span>Historique Médical</span>
+              <textarea name="medicalHistory" v-model="medicalHistoryModel" cols="36" rows="4"></textarea>
+              <span>Historique Médical</span>
             </div>
 
             <div id="checkbox">
               <label for="check">Animal stérélisé</label>
-              <input type="checkbox" id="check">
+              <input type="checkbox" id="check" v-model="sterelisationModel">
             </div>
 
           </div>
@@ -181,7 +181,7 @@
               height="45px" 
               fontSize="26px">
             </ButtonComponent>
-            <ButtonComponent class="button"
+            <ButtonComponent class="button" @click="addAnimal"
               title="Ajouter Animal" 
               borderColor="#FF9505" 
               color="#FEF9F0" 
@@ -226,6 +226,11 @@ data() {
     nacs : false,
     add : false,
     more : false,
+    specieModel : '',
+    dobModel : '',
+    genderModel : '',
+    medicalHistoryModel : '',
+    sterelisationModel : '',
     animalData:{
       specie : '',
       breed : '',
@@ -235,7 +240,9 @@ data() {
       color : '',
       idChip : '',
       weight : '',
-      serelisation : ''
+      medicalHistory : '',
+      serelisation : false,
+      owner : 'enora.lafforgue@gmail.com'
     }
   }
 },
@@ -283,18 +290,24 @@ methods: {
     this.animalData.weight = value;
   },
   addAnimal(){
+    this.animalData.specie = this.specieModel;
+    this.animalData.dob = this.dobModel;
+    this.animalData.gender = this.genderModel;
+    this.animalData.medicalHistory = this.medicalHistoryModel;
+    this.animalData.sterelisation = this.sterelisationModel;
+    
     fetch('https://127.0.0.1:8000/api/animal/add', {
             method: 'POST',
             headers: {},
             body: JSON.stringify(this.animalData)
-        })
-            .then(blob => blob.json())
-            .then(data => {
-              if(data.Token_JWT){
-                localStorage.setItem('token', data.Token_JWT)
-                this.$router.push('/specie')
-              }
-            })
+    })
+    .then(blob => blob.json())
+    .then(data => {
+      if(data.Token_JWT){
+        localStorage.setItem('token', data.Token_JWT)
+        this.$router.push('/carnet-de-sante')
+      }
+    })
   }
 }
 };
