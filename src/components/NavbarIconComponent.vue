@@ -71,7 +71,7 @@ export default {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
-  padding: 40px 25px;
+  padding: 40px 80px;
 }
 p{
   margin-left: 1rem;
@@ -82,11 +82,17 @@ p{
   p{
     display: none;
   }
+  .menu li .link{
+    padding:15px 20px;
+  }
 }
 
 @media (min-width: 481px) and (max-width : 1024px) {
   p{
     display: none;
+  }
+  .menu li .link{
+    padding:15px 50px;
   }
 }
 

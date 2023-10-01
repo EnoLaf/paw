@@ -15,7 +15,7 @@
 <template>
 
   <HeaderRecord></HeaderRecord>
-  <NavbarIcon></NavbarIcon>
+  <NavbarIcon id="navbarTop"></NavbarIcon>
 
   <div class="container">
 
@@ -26,11 +26,11 @@
         <p>22/09/2023 11h <br>Vaccin Mouchi</p>
       </div>
 
-      <ButtonSpecieLeftIcon @click="activeCats" text="CHAT" :link="linkCat" bgColor="#FF950526" borderColor="#FF9505"></ButtonSpecieLeftIcon>
-      <ButtonSpecieRightIcon @click="activeDogs" text="CHIEN" :link="linkDog" bgColor="#E2711D26" borderColor="#E2711D"></ButtonSpecieRightIcon>
-      <ButtonSpecieLeftIcon @click="activeNacs" text="NAC" :link="linkNAC" bgColor="#CC580326" borderColor="#CC5803"></ButtonSpecieLeftIcon>
+      <ButtonSpecieLeftIcon class="specie" @click="activeCats" text="CHAT" :link="linkCat" bgColor="#FF950526" borderColor="#FF9505"></ButtonSpecieLeftIcon>
+      <ButtonSpecieRightIcon class="specie" @click="activeDogs" text="CHIEN" :link="linkDog" bgColor="#E2711D26" borderColor="#E2711D"></ButtonSpecieRightIcon>
+      <ButtonSpecieLeftIcon class="specie" @click="activeNacs" text="NAC" :link="linkNAC" bgColor="#CC580326" borderColor="#CC5803"></ButtonSpecieLeftIcon>
 
-      <ButtonAdd @click="showAddAnimal"></ButtonAdd>
+      <ButtonAdd id="addButton" @click="showAddAnimal"></ButtonAdd>
 
     </div>
     
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-  <section class="addAnimal" v-if="add">
+  <section class="addAnimal" id="animal-section" v-if="add">
 
       <div class="blur" @click.self="close">
         <div class="frame">
@@ -197,6 +197,7 @@
 
   </section>
 
+  <NavbarIcon id="navbarBottom"></NavbarIcon>
   <div class="footer">
     <Footer></Footer>
   </div>
@@ -267,6 +268,7 @@ methods: {
   },
   showMore() {
     this.more = true;
+    this.sterelisation = '';
   },
   showLess() {
       this.more = false;
@@ -295,18 +297,23 @@ methods: {
     this.animalData.gender = this.genderModel;
     this.animalData.medicalHistory = this.medicalHistoryModel;
     this.animalData.sterelisation = this.sterelisationModel;
-    
+    console.log(this.animalData);
     fetch('https://127.0.0.1:8000/api/animal/add', {
             method: 'POST',
-            headers: {},
+            headers: {
+              'Content-type': 'application/json',
+            },
             body: JSON.stringify(this.animalData)
     })
     .then(blob => blob.json())
     .then(data => {
-      if(data.Token_JWT){
-        localStorage.setItem('token', data.Token_JWT)
-        this.$router.push('/carnet-de-sante')
+      this.add = false;
+      if(this.animalData.gender=='1'){
+        alert(this.animalData.name+" a été ajoutée !");
+      } else {
+        alert(this.animalData.name+" a été ajouté !");
       }
+      console.log(data);
     })
   }
 }
@@ -544,23 +551,114 @@ input[type="checkbox"]:checked:after{
   font-size: 24px;
   color: #1C1917;
 }
+#navbarBottom{
+  display: none;
+}
 
 /* Responsive */
 @media (max-width : 480px) {
-    .footer{
-      display: none;
-    }
-    .right-part{
-      display: none;
-    }
-}
-
-@media (min-width: 481px) and (max-width : 1024px) {
+  .container{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--cream);
+  }
+  #navbarBottom{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+  #navbarTop{
+    display: none;
+  }
   .footer{
     display: none;
   }
   .right-part{
     display: none;
+  }
+  .left-part{
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+  }
+  .reminder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+  }
+  .reminder p{
+    padding-left: 20px;
+    font-size: 1.5rem;
+  }
+  .reminder img{
+    height: 75px;
+    width: 75px;
+  }
+  .specie{
+    margin-bottom: 3rem;
+  }
+  #addButton{
+    position: absolute;
+    bottom: 8rem;
+    right: 3rem;
+    z-index: 50;
+  }
+}
+
+@media (min-width: 481px) and (max-width : 1024px) {
+  .container{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--cream);
+  }
+  #navbarBottom{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+  }
+  #navbarTop{
+    display: none;
+  }
+  .footer{
+    display: none;
+  }
+  .right-part{
+    display: none;
+  }
+  .left-part{
+    width: 100%;
+    height: 100%;
+    justify-content: flex-start;
+  }
+  .reminder{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
+  }
+  .reminder p{
+    padding-left: 20px;
+    font-size: 1.5rem;
+  }
+  .reminder img{
+    height: 75px;
+    width: 75px;
+  }
+  .specie{
+    margin-bottom: 5rem;
+  }
+  #addButton{
+    position: absolute;
+    bottom: 15rem;
+    right: 5rem;
+    z-index: 50;
   }
 }
 
