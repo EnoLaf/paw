@@ -316,13 +316,6 @@ p, a{
 }
 
 @media (min-width: 481px) and (max-width : 1024px) {
-  .menu{
-    margin-left: 5rem;
-  }
-  .menu li .link{
-    font-size: 1.5rem;
-    padding-left: 1rem;
-  }
   .frame{
     height: 70vh;
     width: 80vw;

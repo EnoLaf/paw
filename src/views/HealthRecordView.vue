@@ -225,7 +225,7 @@ data() {
     cats : false,
     dogs : false,
     nacs : false,
-    add : false,
+    add : true,
     more : false,
     specieModel : '',
     dobModel : '',
@@ -495,7 +495,6 @@ select{
   font-size: 18px;
   outline: none;
 }
-
 .textArea span{
   position: absolute;
   left: 0;
@@ -520,7 +519,6 @@ input[type="checkbox"]{
   justify-content: center;
   outline: none;
 }
-
 input[type="checkbox"]:after{
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
@@ -529,23 +527,19 @@ input[type="checkbox"]:after{
   color: #FEF9F0;
   display: none;
 }
-
 input[type="checkbox"]:checked{
   background-color:#CC5803;
 }
-
 input[type="checkbox"]:checked:after{
   display: block;
 }
 #check{
   margin-left: 10px;
 }
-
 #checkbox{
   display: flex;
   align-items: center;
 }
-
 #checkbox label{
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
@@ -567,7 +561,7 @@ input[type="checkbox"]:checked:after{
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 100;
+    z-index: 90;
   }
   #navbarTop{
     display: none;
@@ -607,20 +601,37 @@ input[type="checkbox"]:checked:after{
     right: 3rem;
     z-index: 50;
   }
+  .addAnimal{
+    z-index: 100;
+  }
+  .blur{
+    background-color: var(--cream);
+  }
+  .frame{
+    background-color: var(--cream);
+    height: 100vh;
+    width: 100vw;
+    border-radius: 0;
+    margin-top: 0;
+  }
+  .close{
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+  }
 }
 
 @media (min-width: 481px) and (max-width : 1024px) {
   .container{
     height: 100vh;
     width: 100vw;
-    background-color: var(--cream);
   }
   #navbarBottom{
     display: block;
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 100;
+    z-index: 90;
   }
   #navbarTop{
     display: none;
@@ -659,6 +670,21 @@ input[type="checkbox"]:checked:after{
     bottom: 15rem;
     right: 5rem;
     z-index: 50;
+  }
+  .frame{
+    height: 70vh;
+    width: 80vw;
+    margin-top: 15vh;
+  }
+  .close{
+    position: absolute;
+    top: 11rem;
+    right: 6rem;
+  }
+  .input{
+    margin-top: 0;
+    margin-bottom: 0;
+    z-index: 100;
   }
 }
 

@@ -92,4 +92,19 @@
         padding: 0 10px;
         background: var(--bgColor);
     }
+
+    @media (max-width : 480px) {
+        input{
+            width: var(--widthMobile);
+        }
+        span{
+            transform: translateX(1rem) translateY(-15px);
+        }
+    }
+
+    @media (min-width: 481px) and (max-width : 1024px) {
+        span{
+            transform: translateX(10rem) translateY(-15px);
+        }
+    }
 </style>
