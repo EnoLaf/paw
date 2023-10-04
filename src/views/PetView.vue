@@ -3,6 +3,7 @@
   import NavbarIcon from "../components/NavbarIconComponent.vue";
   import Footer from "../components/FooterHealthRecordComponent.vue";
   import AddButton from "../components/ButtonAddComponent.vue";
+  import Accordion from "../components/AccordionComponent.vue"
 </script>
 
 <template>
@@ -59,6 +60,23 @@
 
       <div class="reccords" v-if="reccords">
         <p>Liste des compte rendu</p>
+        <Accordion
+        title="Titre"
+        date="04/10/2023"
+        veterinary="Dr Test"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Pellentesque consectetur mi a risus vehicula ultricies. Pellentesque 
+        mattis odio nec ante hendrerit vestibulum. Praesent blandit sit amet 
+        nulla luctus fringilla. Etiam volutpat dapibus quam eget vehicula. 
+        Donec molestie vel mi quis convallis. Curabitur consequat elementum 
+        nulla ac consequat. Proin ullamcorper ante ac sodales accumsan. 
+        Curabitur ex lacus, dapibus sed eros ac, venenatis finibus mauris. 
+        Suspendisse vel eros non risus lobortis convallis."
+        ></Accordion>
+
+          <div class="accordionComponent" v-for="report in jsonData" :key="report.id">
+            <Accordion :title="report.name" :date="report.date" :veterinary="report.id_veterinary" :content="report.content"></Accordion>
+          </div>
       </div>
 
       <div class="vaccines" v-if="vaccines">

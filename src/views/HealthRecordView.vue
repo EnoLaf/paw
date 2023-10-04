@@ -77,6 +77,7 @@
               height="60px" 
               title="Race">
             </InputLabel>
+            
             <InputLabel @send-value="inputName" class="input"
               type="text" 
               placeholder="Nom" 
@@ -225,7 +226,7 @@ data() {
     cats : false,
     dogs : false,
     nacs : false,
-    add : true,
+    add : false,
     more : false,
     specieModel : '',
     dobModel : '',
