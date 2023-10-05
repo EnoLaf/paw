@@ -73,10 +73,49 @@
         Curabitur ex lacus, dapibus sed eros ac, venenatis finibus mauris. 
         Suspendisse vel eros non risus lobortis convallis."
         ></Accordion>
+        <Accordion
+        title="Titre"
+        date="04/10/2023"
+        veterinary="Dr Test"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Pellentesque consectetur mi a risus vehicula ultricies. Pellentesque 
+        mattis odio nec ante hendrerit vestibulum. Praesent blandit sit amet 
+        nulla luctus fringilla. Etiam volutpat dapibus quam eget vehicula. 
+        Donec molestie vel mi quis convallis. Curabitur consequat elementum 
+        nulla ac consequat. Proin ullamcorper ante ac sodales accumsan. 
+        Curabitur ex lacus, dapibus sed eros ac, venenatis finibus mauris. 
+        Suspendisse vel eros non risus lobortis convallis."
+        ></Accordion>
+        <Accordion
+        title="Titre"
+        date="04/10/2023"
+        veterinary="Dr Test"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Pellentesque consectetur mi a risus vehicula ultricies. Pellentesque 
+        mattis odio nec ante hendrerit vestibulum. Praesent blandit sit amet 
+        nulla luctus fringilla. Etiam volutpat dapibus quam eget vehicula. 
+        Donec molestie vel mi quis convallis. Curabitur consequat elementum 
+        nulla ac consequat. Proin ullamcorper ante ac sodales accumsan. 
+        Curabitur ex lacus, dapibus sed eros ac, venenatis finibus mauris. 
+        Suspendisse vel eros non risus lobortis convallis."
+        ></Accordion>
+        <Accordion
+        title="Titre"
+        date="04/10/2023"
+        veterinary="Dr Test"
+        content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Pellentesque consectetur mi a risus vehicula ultricies. Pellentesque 
+        mattis odio nec ante hendrerit vestibulum. Praesent blandit sit amet 
+        nulla luctus fringilla. Etiam volutpat dapibus quam eget vehicula. 
+        Donec molestie vel mi quis convallis. Curabitur consequat elementum 
+        nulla ac consequat. Proin ullamcorper ante ac sodales accumsan. 
+        Curabitur ex lacus, dapibus sed eros ac, venenatis finibus mauris. 
+        Suspendisse vel eros non risus lobortis convallis."
+        ></Accordion>
 
-          <div class="accordionComponent" v-for="report in jsonData" :key="report.id">
-            <Accordion :title="report.name" :date="report.date" :veterinary="report.id_veterinary" :content="report.content"></Accordion>
-          </div>
+        <div class="accordionComponent" v-for="report in jsonData" :key="report.id">
+          <Accordion :title="report.name" :date="report.date" :veterinary="report.id_veterinary" :content="report.content"></Accordion>
+        </div>
       </div>
 
       <div class="vaccines" v-if="vaccines">
@@ -93,7 +132,9 @@
       </div>
 
       <div class="vet" v-if="vet">
-        <p>Vétérinaire</p>
+        <h1>Vétérinaire</h1>
+        <h3>{{ vetName }}</h3>
+        <p>{{ vetPhone }}<br>{{ vetUrl }}<br>{{ vetAddress }}</p>
       </div>
     </div>
 
@@ -327,6 +368,14 @@ methods: {
   margin-left: 5rem;
   margin-top: 1rem;
   font-size: 1.25rem;
+}
+.vet{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 5rem;
+  margin-top: 2rem;
 }
 
 /* Responsive */
